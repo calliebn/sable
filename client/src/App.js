@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./components/pages/HomePage/Home"
+import Home from "./components/pages/HomePage/Home";
+import Footer from "./components/pages/Footer";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -16,6 +17,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={Home} />
       </Switch>
+      <Footer />
     </Router>
   );
 }

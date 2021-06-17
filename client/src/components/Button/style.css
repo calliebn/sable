@@ -21,8 +21,9 @@
   background-color: transparent;
   color: rgb(160, 158, 158);
   padding: 8px 20px;
-  border: 1px solid var(--primary);
+  border: 1px solid #fef9c7;
   transition: all 0.3s ease-out;
+  font-size: 20px;
 }
 
 .btn--meduim {
@@ -57,7 +58,7 @@
 .btn--medium:hover,
 .btn--mobile:hover {
   transition: all 0.3s ease-out;
-  background: white;
+  background: #fce181;
   color: #026670;
 }
 
