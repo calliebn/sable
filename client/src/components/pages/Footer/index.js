@@ -33,17 +33,7 @@ function Footer() {
           </form>
         </div>
       </section>
-      <div className="footer-links">
-        <div className="footer-link-wrapper">
-          <div className="footer-link-items">
-            <h2>Social Media</h2>
-            <Link to="/">Instagram</Link>
-            <Link to="/">Facebook</Link>
-            <Link to="/">Youtube</Link>
-            <Link to="/">Twitter</Link>
-          </div>
-        </div>
-      </div>
+      
       <section className="social-media">
         <div className="social-media-wrap">
           <div className="footer-logo">
@@ -53,9 +43,9 @@ function Footer() {
             </Link>
           </div>
           <small className="website-rights">
-            {new Date().getFullYear()}&nbsp;SABEL | All Rights Reserved
+            {new Date().getFullYear()}&nbsp;SABLE | All Rights Reserved
           </small>
-          <div className="social-icons">
+          {/* <div className="social-icons">
             <Link
               className="social-icon-link"
               to="/"
@@ -96,7 +86,7 @@ function Footer() {
             >
               <FaLinkedin />
             </Link>
-          </div>
+          </div> */}
         </div>
       </section>
     </div>
