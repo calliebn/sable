@@ -11,9 +11,9 @@ function App() {
   // If we have an Id, go to another page. If not, use login page
   //  Or got to Dashboard component & pass id
   return (
-    //!!!! CHECK IF WE NEED THE FRAGMENTS OR NOT
+    //!!!! CHECK ERROR IN FRAGMENTS/CHEVRON
     <>
-      id ? : <Dashboard id={id} /> : <Login onIdSubmit={setId} />
+      id ? <Dashboard id={id} /> : <Login onIdSubmit={setId} />
     </>
   );
 }

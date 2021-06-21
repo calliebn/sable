@@ -23,6 +23,6 @@ export default function useLocalStorage(key, initialValue) {
   useEffect(() => {
     localStorage.setItem(prefixedKey, JSON.stringify(value));
   }, [prefixedKey, value]);
-  // Retuen 2 set useState values into local storage
+  // Retuen 2 set useState values into local storagel
   return [value, setValue];
 }

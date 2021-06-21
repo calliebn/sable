@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Tab, Nav } from 'react-bootstrap';
+import Chats from './Chats';
+import Contacts from './Contacts';
 
 // To aviod hard coding eventKey, create variables
 const CHATS_KEY = 'chats';
@@ -23,6 +25,18 @@ export default function Sidebar({ id }) {
             <Nav.Link eventKey={CONTACTS_KEY}>Contacts</Nav.Link>
           </Nav.Item>
         </Nav>
+        {/* All info when we click on the tab */}
+        <Tab.Content className='border-right overflow-auto flex-grow-1'>
+          {/* Which tab is which */}
+          <Tab.Pane eventKey={CHATS_KEY}>
+            {/* Render chats */}
+            <Chats />
+          </Tab.Pane>
+          <Tab.Pane eventKey={CONTACTS_KEY}>
+            {/* Render contacts */}
+            <Contacts />
+          </Tab.Pane>
+        </Tab.Content>
       </Tab.Container>
     </div>
   );
