@@ -20,16 +20,8 @@ function App() {
   //  Or got to Dashboard component & pass id
   return (
     //!!!! CHECK ERROR IN FRAGMENTS/CHEVRON
-    <>
-      id ? dashboard : <Login onIdSubmit={setId} />
-    </>
+    <>{id ? dashboard : <Login onIdSubmit={setId} />}</>
   );
 }
 
 export default App;
-
-{
-  /* <>
-      id ? <Dashboard id={id} /> : <Login onIdSubmit={setId} />
-    </> */
-}
