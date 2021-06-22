@@ -34,6 +34,10 @@ const yarnSchema = new Schema(
 
         dye_lot: {
             type: Number
+        },
+
+        description: {
+            type: String
         }
 
     })
