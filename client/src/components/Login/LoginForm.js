@@ -3,10 +3,10 @@ import "./style.css";
 import FormSignup from "./FormSignup";
 import FormSuccess from "./FormSuccess";
 
-const Form = () => {
+const LoginForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const submitForm = useCallback(() => {
+  const submitFormLogin = useCallback(() => {
     setIsSubmitted(true);
   }, [setIsSubmitted]);
 
@@ -18,7 +18,7 @@ const Form = () => {
         <div className="form-content-left">
         </div>
         {!isSubmitted ? (
-          <FormSignup submitForm={submitForm} />
+          <FormSignup submitForm={submitFormLogin} />
         ) : (
           <FormSuccess />
         )}
@@ -27,4 +27,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default LoginForm;

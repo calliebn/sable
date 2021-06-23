@@ -2,13 +2,9 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./components/pages/HomePage/Home";
 import Footer from "./components/pages/Footer";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Navbar from "./components/Navbar";
-
-// import Footer from "./components/Footer";
-// import Header from "./components/Header";
 import Signup from "./components/Signup/FormSignup";
 
 function App() {
