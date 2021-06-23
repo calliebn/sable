@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 import { useContacts } from '../contexts/ContactsProvider';
-import { useChats } from '../components/ChatsProvider';
+import { useChats } from '../contexts/ChatsProvider';
 
-export default function NewChatModal(closeModal) {
+export default function NewChatModal({ closeModal }) {
   const [selectedContactIds, setSelectedContactIds] = useState([]);
-
-  const { contact } = useContacts();
+  const { contacts } = useContacts();
   const { createChat } = useChats();
 
   function handleSubmit(e) {
@@ -16,11 +15,11 @@ export default function NewChatModal(closeModal) {
 
     closeModal();
   }
-
+  // If contact ids on list, return new list
   function handleCheckboxChange(contactId) {
     setSelectedContactIds((prevSelectedContactsIds) => {
       if (prevSelectedContactsIds.includes(contactId)) {
-        return prevSelectedContactsIds.filter((prevID) => {
+        return prevSelectedContactsIds.filter((prevId) => {
           return contactId !== prevId;
         });
       } else {
@@ -39,7 +38,7 @@ export default function NewChatModal(closeModal) {
               <Form.Check
                 type='checkbox'
                 value={selectedContactIds.includes(contact.id)}
-                label={contactname}
+                label={contact.name}
                 onChange={() => handleCheckboxChange(contact.id)}
               />
             </Form.Group>

@@ -3,6 +3,7 @@ import Login from './Login';
 import useLocalStorage from '../hooks/useLocalStorage';
 import Dashboard from './Dashboard';
 import { ContactsProvider } from '../contexts/ContactsProvider';
+import { ChatsProvider } from '../contexts/ChatsProvider';
 
 function App() {
   // save in local storge in 'Application'
@@ -11,7 +12,9 @@ function App() {
   // For the contact context
   const dashboard = (
     <ContactsProvider>
-      <Dashboard id={id} />
+      <ChatsProvider>
+        <Dashboard id={id} />
+      </ChatsProvider>
     </ContactsProvider>
   );
 
