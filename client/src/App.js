@@ -6,9 +6,10 @@ import Footer from "./components/pages/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Navbar from "./components/Navbar";
+
 // import Footer from "./components/Footer";
 // import Header from "./components/Header";
-// import Signup from "./components/Signup";
+import Signup from "./components/Signup/FormSignup";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Navbar />
       <Switch>
         <Route path="/" exact component={Home} />
+        <Route path='/signup' exact component={Signup} />
       </Switch>
       <Footer />
     </Router>
