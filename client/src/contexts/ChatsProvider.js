@@ -47,6 +47,7 @@ export function ChatsProvider({ children }) {
 
   const value = {
     chats: formattedChats,
+    createChat,
     // Use selected convo at a later point
     selectedChat: formattedChats[selectedChatIndex],
     // mapping to a different name
