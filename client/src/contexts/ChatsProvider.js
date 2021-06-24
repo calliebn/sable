@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import useLocalStorage from '../hooks/useLocalStorage';
 import { useContacts } from './ContactsProvider';
 
@@ -8,8 +8,13 @@ export function useChats() {
   return useContext(ChatsContext);
 }
 
+// THIS IS NOT WORKING!
 export function ChatsProvider({ children }) {
   const [chats, setChats] = useLocalStorage('chats', []);
+
+  // Create a state with the first chat
+  const [selectedChatIndex, setSelectedChatIndex] = useState(0);
+
   // import contacts
   const { contacts } = useContacts();
 
@@ -20,7 +25,7 @@ export function ChatsProvider({ children }) {
   }
 
   // Store name of recipients
-  const formattedChats = chats.map((chat) => {
+  const formattedChats = chats.map((chat, index) => {
     // map all recipients for a single conversation
     const recipients = chat.recipients.map((recipient) => {
       // convert to object with id (recipient) and name
@@ -32,13 +37,20 @@ export function ChatsProvider({ children }) {
       const name = (contact && contact.name) || recipient;
       return { id: recipient, name };
     });
+    // To figure if chat selected. Determining if we get index from above
+    const selected = index === selectedChatIndex;
     // new object that has everthing about our chats
     // replacing recipients with the new formatted text
-    return { ...chat, recipients };
+    // True, false boolean for selected
+    return { ...chat, recipients, selected };
   });
 
   const value = {
     chats: formattedChats,
+    // Use selected convo at a later point
+    selectedChat: formattedChats[selectedChatIndex],
+    // mapping to a different name
+    selectChatIndex: setSelectedChatIndex,
     createChat,
   };
 
