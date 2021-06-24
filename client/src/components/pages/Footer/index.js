@@ -1,15 +1,8 @@
 import React from "react";
 import "./style.css";
-import { Button } from "../../Button";
 import { Link } from "react-router-dom";
-import {
-  FaFacebook,
-  FaInstagram,
-  FaYoutube,
-  FaTwitter,
-  FaLinkedin,
-} from "react-icons/fa";
 import { FcCloseUpMode } from "react-icons/fc";
+import Contact from "../../Contact.js";
 
 function Footer() {
   return (
@@ -22,7 +15,9 @@ function Footer() {
           You can unsubscribe at any time.
         </p>
         <div className="input-areas">
-          <form>
+          <Contact />
+
+          {/* <form>
             <input
               className="footer-input"
               name="email"
@@ -30,16 +25,16 @@ function Footer() {
               placeholder="Your Email"
             />
             <Button buttonStyle="btn--outline">Subscribe</Button>
-          </form>
+          </form> */}
         </div>
       </section>
-      
+
       <section className="social-media">
         <div className="social-media-wrap">
           <div className="footer-logo">
             <Link to="/" className="social-logo">
               <FcCloseUpMode className="navbar-icon" />
-              SABEL
+              SABLE
             </Link>
           </div>
           <small className="website-rights">

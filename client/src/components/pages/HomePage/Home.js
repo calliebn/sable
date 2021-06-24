@@ -4,12 +4,15 @@ import { homeObjOne } from "./Data";
 import Signup from "../../Signup/FormSignup";
 import Login from "../../Login/Login";
 
+
+
+
 function Home() {
   return (
     <>
-      <Hero {...homeObjOne}   />
-     <Signup />
-     <Login />
+      <Hero {...homeObjOne} />
+      <Signup />
+   <Login />
     </>
   );
 }

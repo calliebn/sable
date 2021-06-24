@@ -7,14 +7,17 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Signup from "./components/Signup/FormSignup";
 
+
+
 function App() {
   return (
     <Router>
       <Navbar />
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path='/signup' exact component={Signup} />
+        <Route path="/signup" exact component={Signup} />
       </Switch>
+      
       <Footer />
     </Router>
   );

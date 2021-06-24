@@ -19,6 +19,7 @@
     "nodemon": "^1.18.7"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "bootstrap": "^5.0.1",
     "emailjs": "^3.4.0",
     "emailjs-com": "^3.1.0",
