@@ -28,6 +28,7 @@ export function ChatsProvider({ children }) {
   const formattedChats = chats.map((chat, index) => {
     // map all recipients for a single conversation
     const recipients = chat.recipients.map((recipient) => {
+      // Link to Chat.js
       // convert to object with id (recipient) and name
       // match and find contact
       const contact = contacts.find((contact) => {
