@@ -1,8 +1,15 @@
+const { ObjectId } = require("mongodb");
+const { ObjectID } = require("mongodb");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const yarnSchema = new Schema(
     {
+        user_id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'user'
+        },
+
         company: {
             type: String
         },
