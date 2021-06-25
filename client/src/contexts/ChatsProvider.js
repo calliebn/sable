@@ -79,14 +79,24 @@ export function ChatsProvider({ id, children }) {
       return { id: recipient, name };
     });
     // To figure if chat selected. Determining if we get index from above
-    
-    cosnt messages = 
-    
+
+    const messages = chat.messages.map((message) => {
+      const contact = contacts.find((contact) => {
+        // If we have a contat = sender
+        return contact.id === message.sender;
+      });
+
+      const name = (contact && contact.name) || message.sender;
+      // message sent from me
+      const fromMe = id === message.sender;
+      return { ...message, senderName: name, fromMe };
+    });
+
     const selected = index === selectedChatIndex;
     // new object that has everthing about our chats
     // replacing recipients with the new formatted text
     // True, false boolean for selected
-    return { ...chat, recipients, selected };
+    return { ...chat, messages, recipients, selected };
   });
 
   const value = {
@@ -112,8 +122,8 @@ function arrayEquality(a, b) {
   // otherwise, sort
   a.sort();
   b.sort();
-// every element in a is = every element in b at the same index position
-// arrays are exactyl equal
+  // every element in a is = every element in b at the same index position
+  // arrays are exactyl equal
   return a.every((element, index) => {
     return element === b[index];
   });
