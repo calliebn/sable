@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Form, InputGroup, Button } from 'react-bootstrap';
 import { useChats } from '../contexts/ChatsProvider';
 
 export default function OpenChat() {
   const [text, setText] = useState('');
+  // Scrolling
+  const setRef = useCallback((node) => {
+    if (node) {
+      node.scrollIntoView({ smooth: true });
+    }
+  }, []);
+
   const { sendMessage, selectedChat } = useChats();
 
   function handleSubmit(e) {
@@ -25,31 +32,47 @@ export default function OpenChat() {
   return (
     <div className='d-flex flex-column flex-grow-1'>
       {/* placeholer */}
+
       <div className='flex-grow-1 overflow-auto'>
         {/* put messages on left hand side */}
         {/* Stack them on one on top of the other, start messages from the bottom to top */}
         {/* Padding for a little space */}
-        <div className='h-100 d-flex flex column align-items-start justify-content-end px-3'>
+
+        <div className='d-flex flex-column align-items-start justify-content-end px-3'>
           {/* Display different messages */}
-          {selectedChat.messages.map((message, index)) => {
-            // No unique Ids, 
+          {selectedChat.messages.map((message, index) => {
+            const lastMessage = selectedChat.messages.length - 1 === index;
+
+            // No unique Ids
             return (
-              // name of person who sends the message and the wrap 
+              // name of person who sends the message and the wrap
               // the message in the bubble
+
               <div
+                ref={lastMessage ? setRef : null}
+                // WHY IS THIS NOT GOING TO THE RIGHT?
                 key={index}
-                className='my-1 d-flex flex-column'>
-                  {/* string interpolation */}
-                  {/* instead of normal string, use inline if statement */}
-                  <div className = {`rounded px-2 py-1 ${message.from ? 'bg-primary text-white' : 'border'}`}>
-                    
-                    {message.text}
-                    </div>
-                   <div>{message.fromMe ? 'You' : message.senderName}
-                  </div>
+                className={`my-1 d-flex flex-column 
+                ${message.fromMe ? 'align-self-end' : ''}`}
+              >
+                {/* string interpolation */}
+                {/* instead of normal string, use inline if statement */}
+                <div
+                  className={`rounded px-2 py-1 
+                  ${message.fromMe ? 'bg-primary text-white' : 'border'}`}
+                >
+                  {message.text}
+                </div>
+
+                <div
+                  className={`text-muted small 
+                ${message.fromMe ? 'text-right' : ''}`}
+                >
+                  {message.fromMe ? 'You' : message.senderName}
+                </div>
               </div>
-            )
-          }}
+            );
+          })}
         </div>
       </div>
 
