@@ -4,6 +4,7 @@ import useLocalStorage from '../hooks/useLocalStorage';
 import Dashboard from './Dashboard';
 import { ContactsProvider } from '../contexts/ContactsProvider';
 import { ChatsProvider } from '../contexts/ChatsProvider';
+import { SocketProvider } from '../contexts/SocketProvider';
 
 function App() {
   // save in local storge in 'Application'
@@ -11,11 +12,13 @@ function App() {
 
   // For the contact context
   const dashboard = (
-    <ContactsProvider>
-      <ChatsProvider id={id}>
-        <Dashboard id={id} />
-      </ChatsProvider>
-    </ContactsProvider>
+    <SocketProvider id={id}>
+      <ContactsProvider>
+        <ChatsProvider id={id}>
+          <Dashboard id={id} />
+        </ChatsProvider>
+      </ContactsProvider>
+    </SocketProvider>
   );
 
   // If you have id, do not need login page

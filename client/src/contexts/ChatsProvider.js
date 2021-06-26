@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect, useCallback } from 'react';
-import { Socket } from 'socket.io-client';
 import useLocalStorage from '../hooks/useLocalStorage';
 import { useContacts } from './ContactsProvider';
 import { useSocket } from './SocketProvider';
