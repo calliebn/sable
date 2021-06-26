@@ -8,25 +8,31 @@ const userSchema = new Schema(
         username: {
             type: String,
             trim: true,
-            required: "Please enter your username"
+            unique: [true, 'That username is already taken'],
+            lowercase: true,
+            validate: [validator.isAlphanumeric, 'Usernames can only have letters and numbers']
         },
 
         email: {
             type: String,
-            required: "Please enter your email"
+            required: [true, "Please enter your email"],
+            unique: [true, 'that email address is already in use'],
+            lowercase: true,
+            validate: [validator.isEmail, 'Please enter a valid email address']
 
         },
 
         password: {
             type: String,
-            required: "Please enter your password"
+            required: [true, "Please enter your password"],
+            minLength: [6, 'Password must be at least six characters']
         },
 
         passwordConfirm: {
             type: String,
             required: [true, "Please retype your password"],
             validate: {
-                validator function(el) {
+                validator: function (el) {
                     return el === this.password;
                 }, message: "Passwords don\'t match."
             }

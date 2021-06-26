@@ -10,6 +10,10 @@ const yarnSchema = new Schema(
             ref: 'user'
         },
 
+        image: {
+            type: String
+        },
+
         company: {
             type: String
         },

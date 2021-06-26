@@ -6,7 +6,7 @@ const userRoutes = require("./user-routes");
 router.use("/yarns", yarnRoutes);
 
 // User routes
-router.use("/", userRoutes);
-router.use("/logout", userRoutes);
+router.use("/user", userRoutes);
+// router.use("/logout", userRoutes);
 
 module.exports = router;
