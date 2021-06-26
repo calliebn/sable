@@ -1,6 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect, useCallback } from 'react';
+import { Socket } from 'socket.io-client';
 import useLocalStorage from '../hooks/useLocalStorage';
 import { useContacts } from './ContactsProvider';
+import { useSocket } from './SocketProvider';
 
 const ChatsContext = React.createContext();
 
@@ -18,6 +20,9 @@ export function ChatsProvider({ id, children }) {
   // import contacts
   const { contacts } = useContacts();
 
+  // socket
+  const socket = useSocket();
+
   function createChat(recipients) {
     setChats((prevChats) => {
       return [...prevChats, { recipients, messages: [] }];
@@ -27,40 +32,53 @@ export function ChatsProvider({ id, children }) {
   // Parameters: Reciver, text, sender
   // msg that gets called from both server (send a msg)
   // and send msg to other people
-  function addMessageToChat({ recipients, text, sender }) {
-    setChats((prevChats) => {
-      // convo that matches the recipent.
-      // create new message
 
-      let madeChange = false;
-      const newMessage = { sender, text };
-      const newChats = prevChats.map((chat) => {
-        // If recipient array matches the recipients of each
-        // individual convo
-        if (arrayEquality(chat.recipients, recipients)) {
-          madeChange = true;
-          //  new chat
-          return { ...chat, messages: [...chat.messages, newMessage] };
+  const addMessageToChat = useCallback(
+    ({ recipients, text, sender }) => {
+      setChats((prevChats) => {
+        // convo that matches the recipent.
+        // create new message
+
+        let madeChange = false;
+        const newMessage = { sender, text };
+        const newChats = prevChats.map((chat) => {
+          // If recipient array matches the recipients of each
+          // individual convo
+          if (arrayEquality(chat.recipients, recipients)) {
+            madeChange = true;
+            //  new chat
+            return { ...chat, messages: [...chat.messages, newMessage] };
+          }
+          //  if not true, return convo
+          return chat;
+        });
+
+        // Loop for changes and no changes
+        if (madeChange) {
+          return newChats;
+        } else {
+          return [
+            // Taking current chats
+            ...prevChats,
+            // Adding new Chats
+            { recipients, messages: [newMessage] },
+          ];
         }
-        //  if not true, return convo
-        return chat;
       });
+    },
+    [setChats]
+  );
 
-      // Loop for changes and no changes
-      if (madeChange) {
-        return newChats;
-      } else {
-        return [
-          // Taking current chats
-          ...prevChats,
-          // Adding new Chats
-          { recipients, messages: [newMessage] },
-        ];
-      }
-    });
-  }
+  useEffect(() => {
+    if (socket == null) return;
+
+    socket.on('receive-message', addMessageToChat);
+
+    return () => socket.off('recieve-message');
+  }, [socket, addMessageToChat]);
 
   function sendMessage(recipients, text) {
+    socket.emit('send-message', { recipients, text });
     addMessageToChat({ recipients, text, sender: id });
   }
 
