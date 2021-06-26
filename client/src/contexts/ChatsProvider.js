@@ -70,10 +70,11 @@ export function ChatsProvider({ id, children }) {
 
   useEffect(() => {
     if (socket == null) return;
-
+    // connected to server.js
     socket.on('receive-message', addMessageToChat);
 
     return () => socket.off('recieve-message');
+    // dependencies
   }, [socket, addMessageToChat]);
 
   function sendMessage(recipients, text) {
@@ -118,7 +119,6 @@ export function ChatsProvider({ id, children }) {
 
   const value = {
     chats: formattedChats,
-    createChat,
     // Use selected convo at a later point
     selectedChat: formattedChats[selectedChatIndex],
     sendMessage,

@@ -53,7 +53,11 @@ export default function OpenChat() {
                 // WHY IS THIS NOT GOING TO THE RIGHT?
                 key={index}
                 className={`my-1 d-flex flex-column 
-                ${message.fromMe ? 'align-self-end' : ''}`}
+                ${
+                  message.fromMe
+                    ? 'align-self-end align-items-end'
+                    : 'align-items-start'
+                }`}
               >
                 {/* string interpolation */}
                 {/* instead of normal string, use inline if statement */}

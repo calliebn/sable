@@ -19,7 +19,7 @@ export function SocketProvider({ id, children }) {
       { query: { id } }
     );
     setSocket(newSocket);
-
+    // When useEffect runs a second time, remove old socket
     return () => newSocket.close();
   }, [id]);
 
