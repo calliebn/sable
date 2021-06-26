@@ -1,16 +1,9 @@
 import React from "react";
 import "./style.css";
-import { Button } from "../../Button";
 import { Link } from "react-router-dom";
-import {
-  FaFacebook,
-  FaInstagram,
-  FaYoutube,
-  FaTwitter,
-  FaLinkedin,
-} from "react-icons/fa";
-import { FcCloseUpMode } from "react-icons/fc";
 
+import { FcCloseUpMode } from "react-icons/fc";
+import Contact from "../Contact.js/index.js";
 function Footer() {
   return (
     <div className="footer-container">
@@ -23,23 +16,25 @@ function Footer() {
         </p>
         <div className="input-areas">
           <form>
-            <input
+            {/* <input
               className="footer-input"
               name="email"
               type="email"
               placeholder="Your Email"
-            />
-            <Button buttonStyle="btn--outline">Subscribe</Button>
+            /> */}
+            <Contact />
+          
+        
           </form>
         </div>
       </section>
-      
+
       <section className="social-media">
         <div className="social-media-wrap">
           <div className="footer-logo">
             <Link to="/" className="social-logo">
               <FcCloseUpMode className="navbar-icon" />
-              SABEL
+              SABLE
             </Link>
           </div>
           <small className="website-rights">

@@ -1,31 +1,52 @@
 {
   "name": "sable",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "sable",
-  "main": "server.js",
-  "scripts": {
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "node server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
-    "client": "cd client && npm run start",
-    "install": "cd client && npm install",
-    "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "concurrently": "^4.1.0",
-    "nodemon": "^1.18.7"
-  },
+  "private": true,
+  "proxy": "http://localhost:3001/",
   "dependencies": {
+    "axios": "^0.21.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
     "bootstrap": "^5.0.1",
+    "concurrently": "^6.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "emailjs": "^3.4.0",
     "emailjs-com": "^3.1.0",
-    "express": "^4.16.3",
-    "if-env": "^1.0.4",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-hook-form": "^7.9.0",
     "react-icons": "^4.2.0",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.3",
+    "react-validation": "^3.0.7",
+    "validator": "^13.6.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^8.0.0",
+    "@testing-library/react": "^12.0.0",
+    "@testing-library/user-event": "^13.1.9",
+    "nodemon": "^2.0.7"
   }
 }

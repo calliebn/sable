@@ -6,6 +6,9 @@ import { FcCloseUpMode } from "react-icons/fc";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Button } from "../Button";
 import { IconContext } from "react-icons/lib";
+import Yarn from '../../pages/Yarn'
+import Home from "../Home";
+
 
 const Navbar = () => {
   const [click, setClick] = useState(false);
@@ -45,11 +48,12 @@ const Navbar = () => {
               </li>
               <li className="nav-item">
                 <Link
-                  to="/stash"
+                  to="/yarn"
                   className="nav-links"
                   onClick={closeMobileMenu}
                 >
-                  Stash
+                  <Yarn />
+                  Yarn
                 </Link>
               </li>
               <li className="nav-item">
@@ -73,9 +77,13 @@ const Navbar = () => {
                     onClick={closeMobileMenu}
                   >
                     <Button className="btn--outline" buttonSize="btn--mobile">
-                      Sign Up
+                      Sign Up 
                     </Button>
+                   
+               
+                  
                   </Link>
+                  
                 )}
               </li>
             </ul>

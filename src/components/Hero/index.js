@@ -44,7 +44,7 @@ function Hero({
                   {description}
                 </p>
                 <Link to="/sign-up">
-                  <Button className='hero-btn' buttonSize="btn--wide">
+                  <Button className="hero-btn" buttonSize="btn--wide">
                     {buttonLabel}
                   </Button>
                 </Link>
