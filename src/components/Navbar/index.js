@@ -8,9 +8,28 @@ import { Button } from "../Button";
 import { IconContext } from "react-icons/lib";
 import Yarn from '../../pages/Yarn'
 import Home from "../Home";
+import Profile from "../Profile";
+
+import AuthService from "../../services/auth.service";
 
 
 const Navbar = () => {
+
+const [currentUser, setCurrentUser] =useState(undefined);
+useEffect(() => {
+  const user =AuthService.getCurrentUser();
+
+  if(user) {
+    setCurrentUser(user)
+  }
+}, []);
+
+const logOut = () => {
+  AuthService.logout();
+}
+
+
+
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
@@ -30,6 +49,7 @@ const Navbar = () => {
   window.addEventListener("resize", showButton);
   return (
     <>
+
       <IconContext.Provider value={{ color: "#fff" }}>
         <div className="navbar">
           <div className="navbar-container container">
@@ -42,8 +62,7 @@ const Navbar = () => {
             </div>
             <ul className={click ? "nav-menu active" : "nav-menu"}>
               <li className="nav-item">
-                <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                  Home
+                <Link  to={'/'} className ='nav-links'>Home
                 </Link>
               </li>
               <li className="nav-item">
@@ -65,14 +84,49 @@ const Navbar = () => {
                   Message
                 </Link>
               </li>
+
+{currentUser && (
+  
+    <li className = 'nav-item'>
+      <Link to={'/user'} className='nav-links'>User</Link>
+    </li>
+  
+)}
+
+{currentUser ? (
+          <div className="navbar-nav ml-auto">
+            <li className="nav-item">
+              <Link to={"/profile"} className="nav-links">
+                {currentUser.username}
+              </Link>
+            </li>
+            <li className="nav-item">
+              <a href="/login" className="nav-links" onClick={logOut}>
+                LogOut
+              </a>
+            </li>
+          </div>
+) : (
+  <div className="navbar-nav ml-auto">
+  <li className="nav-item">
+    <Link to={"/login"} className="nav-links">
+      Login
+    </Link>
+  </li>
+
+</div>
+)}
+
+
+
               <li className="nav-btn">
                 {button ? (
-                  <Link to="/sign-up" className="btn-link">
+                  <Link to={'/register'} className="btn-link">
                     <Button buttonStyle="btn--outline">Sign Up</Button>
                   </Link>
                 ) : (
                   <Link
-                    to="/sign-up"
+                    to="/register"
                     className="btn-link"
                     onClick={closeMobileMenu}
                   >

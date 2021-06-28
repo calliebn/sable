@@ -16,6 +16,9 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Yarn from "./pages/Yarn";
 
+import Profile from "./components/Profile";
+import BoardUser from "./components/BoardUser"
+
 
 
 
@@ -37,26 +40,35 @@ const App =() => {
 
 
 
-
+<div>
     <Router>
     
-     
-      <Navbar />
+     <Navbar />
   
       <Switch>
     
         <Route path="/" exact component={Home} />
  
         <Route path="/yarn" export component ={Yarn} />
+        <Route exact path='/profile' component={Profile}/>
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
+        <Route path='/user' component={BoardUser} />
       
       </Switch>
       <Footer />
     
     
     </Router>
+    </div>
   );
 }
+
+
+// module.exports ={
+//   HOST: "localhost",
+//   PORT: 2717,
+//   DB: "sable_db"
+// }
 
 export default App;
