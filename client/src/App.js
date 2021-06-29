@@ -65,10 +65,4 @@ const App =() => {
 }
 
 
-// module.exports ={
-//   HOST: "localhost",
-//   PORT: 2717,
-//   DB: "sable_db"
-// }
-
 export default App;
