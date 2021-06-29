@@ -38,7 +38,7 @@ const Chat = ({ location }) => {
   // useEffect for handling messages and only runs when messages array changes
   useEffect(() => {
     socket.on('message', (message) => {
-      //Add new messages to our messages array the ... copies the old messages and all we do is append the new
+      //Add new messages to messages array. '...' copies the old messages and appends new
       setMessages((messages) => [...messages, message]);
     });
 
@@ -47,12 +47,11 @@ const Chat = ({ location }) => {
     });
   }, []);
 
-  //functioning for sending messages -functional component
+  //Functional componentfor sending messages
   const sendMessage = (event) => {
     event.preventDefault();
 
     if (message) {
-      //on the callback from index.js our input field clears
       socket.emit('sendMessage', message, () => setMessage(''));
     }
   };
