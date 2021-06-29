@@ -6,7 +6,7 @@ import './Chat.css';
 
 import Input from '../Input/Input';
 import InfoBar from '../InfoBar/InfoBar';
-import Messages from '../Message/Messages';
+import Messages from '../Messages/Messages';
 import TextContainer from '../TextContainer/TextContainer';
 
 let socket;

@@ -1,60 +1,64 @@
-const express = require("express");
-let session = require('express-session');
-let MongoDBStore = require('connect-mongodb-session')(session);
-const path = require("path");
-const PORT = process.env.PORT || 3001;
+const express = require('express');
+const socketio = require('socket.io');
+const http = require('http');
+const cors = require('cors');
+//Cors since heroku is used for backend, we need to connect front-end and back-end
+
+const {
+  addUser,
+  removeUser,
+  getUser,
+  getUsersInRoom,
+} = require('./server/users.js');
+
+const PORT = process.env.PORT || 5000; //For local
+const router = require('./server/router');
+
 const app = express();
-// let numExpectedSources = 2;
-const mongoose = require("mongoose");
-const routes = require("./routes");
+const server = http.createServer(app);
+const io = socketio(server);
 
-// Define middleware here
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-// Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
+app.use(router);
+app.use(cors());
 
-// Define API routes here
-app.use(routes);
+io.on('connection', (socket) => {
+  socket.on('join', ({ name, room }, callback) => {
+    const { error, user } = addUser({ id: socket.id, name, room });
 
-// Connect to Mongo DB
-let store = new MongoDBStore({
-  uri: process.env.MONGODB_URI || "mongodb://localhost/yarndb",
-  collection: "mysession"
+    if (error) return callback(error);
+
+    socket.emit('message', {
+      user: 'admin',
+      text: `${user.name}, welcome to the the room ${user.room}`,
+    });
+    socket.broadcast
+      .to(user.room)
+      .emit('message', { user: 'admin', text: `${user.name}, has joined!` });
+
+    socket.join(user.room);
+    io.to(user.room).emit('roomData', {
+      room: user.room,
+      users: getUsersInRoom(user.room),
+    });
+    callback();
+  });
+  socket.on('sendMessage', (message, callback) => {
+    const user = getUser(socket.id);
+    io.to(user.room).emit('message', { user: user.name, text: message });
+    callback();
+  });
+  socket.on('disconnect', () => {
+    const user = removeUser(socket.id);
+    if (user) {
+      io.to(user.room).emit('message', {
+        user: 'Admin',
+        text: `${user.name} has left.`,
+      });
+      io.to(user.room).emit('roomData', {
+        room: user.room,
+        users: getUsersInRoom(user.room),
+      });
+    }
+  });
 });
-
-// Catch errors
-store.on('error', function (error) {
-  console.log(error);
-});
-
-app.use(require('express-session')({
-  secret: process.env.SECRET,
-  cookie: {
-    maxAge: 1000 * 60 * 60 * 24 * 7 //cookie valid for 1 week
-  },
-  store: store,
-  resave: true,
-  saveUninitialized: true
-}));
-
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/yarndb",
-//   {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//     useCreateIndex: true,
-//     useFindAndModify: false
-//   }
-// )
-
-// Send every other request to the React app
-// Define any API routes before this runs
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
-
-app.listen(PORT, () => {
-  console.log(`🌎 ==> API server now on port ${PORT}!`);
-});
+server.listen(PORT, () => console.log(`Server has started on port ${PORT}`));

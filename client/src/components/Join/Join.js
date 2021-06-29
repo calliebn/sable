@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Join.css';
-import ProjectInfo from '../ProjectInfo/ProjectInfo';
 
 const Join = () => {
   const [name, setName] = useState('');
@@ -39,7 +38,6 @@ const Join = () => {
           </button>{' '}
         </Link>
       </div>
-      <ProjectInfo />
     </div>
   );
 };
