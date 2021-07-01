@@ -1,17 +1,17 @@
 .messageBox {
   background: #f3f3f3;
-  border-radius: 20px;
-  padding: 5px 20px;
+  border-radius: 15px;
+  padding: 1px 20px;
   color: white;
   display: inline-block;
-  max-width: 80%;
+  max-width: 100%;
 }
 
 .messageText {
   width: 100%;
-  letter-spacing: 0;
+  letter-spacing: 0.2;
   float: left;
-  font-size: 1.1em;
+  font-size: 1em;
   word-wrap: break-word;
 }
 
@@ -29,7 +29,7 @@
 .sentText {
   display: flex;
   align-items: center;
-  font-family: Helvetica;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   color: #828282;
   letter-spacing: 0.3px;
 }

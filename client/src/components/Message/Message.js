@@ -1,10 +1,13 @@
 import React from 'react';
 import './Message.css';
 import ReactEmoji from 'react-emoji';
+
+//User is the sender of the message and the text is the body of the msg
 const Message = ({ message: { user, text }, name }) => {
   let isSentByCurrentUser = false;
   const trimmedName = name.trim().toLowerCase();
-  //   Blue message on the right side as sent by the current user
+
+  //if sent by the current user, render message on the right side
   if (user === trimmedName) {
     isSentByCurrentUser = true;
   }

@@ -3,9 +3,8 @@ import './InfoBar.css';
 import closeIcon from '../../icons/closeIcon.png';
 import onlineIcon from '../../icons/onlineIcon.png';
 
-//Refresh page to clean the socket off that is disconnected in chat.js
-//Infobar gets passed in room from chat.js display the name of that room
-
+//Full page refresh at the a href -> clean the socket that is disconnected in chat.js
+//Infobar -> display the name of that room below
 const InfoBar = ({ room }) => (
   <div className='infoBar'>
     <div className='leftInnerContainer'>
