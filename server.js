@@ -1,9 +1,9 @@
 const express = require('express');
-let session = require('express-session');
-
-// SOCKET.IO
 const socketio = require('socket.io');
 const http = require('http');
+
+// FOR SOCKET.IO - 1
+var Server = require('http').Server;
 const session = require('express-session');
 var RedisStore = require('connect-redis')(session);
 
@@ -21,22 +21,26 @@ const {
 const PORT = process.env.PORT || 5000;
 const router = require('./server/router');
 
+const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
+// FOR SOCKET.IO - 2
 const sessionMiddleware = session({
   store: new RedisStore({}), // XXX redis server config
   secret: 'keyboard cat',
 });
+
 // Express session middleware as a Socket.IO middleware
 sio.use(function (socket, next) {
-  sessionMiddleware(socket.request, socket.request.res || {}, next);
+  sessionMiddleware(socket.request, socket.request.res, next);
 });
 
 app.use(router);
 app.use(cors());
 app.use(sessionMiddleware);
 
+// FOR SOCKET.IO - 3
 app.get('/', function (req, res) {
   req.session; // Session object in a normal request
 });
@@ -100,66 +104,4 @@ io.on('connection', (socket) => {
     }
   });
 });
-
-// MONGO
-let MongoDBStore = require('connect-mongodb-session')(session);
-const path = require('path');
-const PORT = process.env.PORT || 3001;
-const app = express();
-
-// let numExpectedSources = 2;
-const mongoose = require('mongoose');
-const routes = require('./routes');
-
-// Define middleware here
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-// Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
-}
-
-// Define API routes here
-app.use(routes);
-
-// Connect to Mongo DB
-let store = new MongoDBStore({
-  uri: process.env.MONGODB_URI || 'mongodb://localhost/yarndb',
-  collection: 'mysession',
-});
-
-// Catch errors
-store.on('error', function (error) {
-  console.log(error);
-});
-
-app.use(
-  require('express-session')({
-    secret: process.env.SECRET,
-    cookie: {
-      maxAge: 1000 * 60 * 60 * 24 * 7, //cookie valid for 1 week
-    },
-    store: store,
-    resave: true,
-    saveUninitialized: true,
-  })
-);
-
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/yarndb",
-//   {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//     useCreateIndex: true,
-//     useFindAndModify: false
-//   }
-// )
-
-// Send every other request to the React app
-// Define any API routes before this runs
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './client/build/index.html'));
-});
-
-app.listen(PORT, () => {
-  console.log(`🌎 ==> API server now on port ${PORT}!`);
-});
+server.listen(PORT, () => console.log(`Server has started on port ${PORT}`));
