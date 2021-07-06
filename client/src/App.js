@@ -1,17 +1,65 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
+import AuthService from "./services/auth.service";
+import Login from "./components/Login";
+import Register from "./components/Register";
 
-function App() {
+
+
+
+
+import Home from "./pages/HomePage/Home";
+import Footer from "./components/Footer";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Yarn from "./pages/Yarn";
+
+import Profile from "./components/Profile";
+import BoardUser from "./components/BoardUser"
+
+
+
+
+const App =() => {
+  const [currentUser, setCurrentUser] = useState(undefined);
+
+  useEffect(() => {
+    const user =AuthService.getCurrentUser();
+
+    if(user) {
+      setCurrentUser(user);
+    }
+  }, []);
+
+  const logout = () => {
+    AuthService.logout()
+  }
   return (
-    <div className="App">
-      <div className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h2>Welcome to React</h2>
-      </div>
-      <p className="App-intro">
-        To get started, edit <code>src/App.js</code> and save to reload.
-      </p>
+
+
+
+<div>
+    <Router>
+    
+     <Navbar />
+  
+      <Switch>
+    
+        <Route path="/" exact component={Home} />
+ 
+        <Route path="/yarn" export component ={Yarn} />
+        <Route exact path='/profile' component={Profile}/>
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
+        <Route path='/user' component={BoardUser} />
+      
+      </Switch>
+      <Footer />
+    
+    
+    </Router>
     </div>
   );
 }
