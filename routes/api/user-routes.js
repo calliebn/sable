@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const userControllers = require("../../controllers/userControllers");
 
-// Matches with "/api/login"
+// Matches with "/api/user/login"
 router.route("/login")
     .post(userControllers.create);
 

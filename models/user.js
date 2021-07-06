@@ -1,42 +1,35 @@
 const mongoose = require("mongoose");
 const bcrypt = require('bcrypt');
-const validator = require('validator');
+const validator = require('express-validator');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
     {
         username: {
             type: String,
-            trim: true,
-            unique: [true, 'That username is already taken'],
-            lowercase: true,
-            validate: [validator.isAlphanumeric, 'Usernames can only have letters and numbers']
+            required: [true, "Please enter your username"]
         },
 
         email: {
             type: String,
-            required: [true, "Please enter your email"],
-            unique: [true, 'that email address is already in use'],
-            lowercase: true,
-            validate: [validator.isEmail, 'Please enter a valid email address']
+            required: [true, "Please enter your email"]
 
         },
 
         password: {
             type: String,
-            required: [true, "Please enter your password"],
-            minLength: [6, 'Password must be at least six characters']
-        },
-
-        passwordConfirm: {
-            type: String,
-            required: [true, "Please retype your password"],
-            validate: {
-                validator: function (el) {
-                    return el === this.password;
-                }, message: "Passwords don\'t match."
-            }
+            required: [true, "Please enter your password"]
         }
+
+        // passwordConfirm: {
+        //     type: String,
+        //     required: [true, "Please retype your password"],
+        //     validate: {
+        //         validator: function (el) {
+        //             return el === this.password;
+        //         }, message: "Passwords don\'t match."
+        //     }
+        // }
     }
 );
 
