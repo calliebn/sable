@@ -3,7 +3,7 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 
-import AuthService from "../services/auth.service";
+import AuthService from "../../services/auth.service";
 
 const required = (value) => {
   if (!value) {
@@ -68,7 +68,7 @@ const Login = (props) => {
   return (
     <div className="col-md-12">
       <div className="card card-container">
-        
+
 
         <Form onSubmit={handleLogin} ref={form}>
           <div className="form-group">
