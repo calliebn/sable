@@ -2,8 +2,7 @@ import React, { useState, useRef } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-
-import AuthService from "../services/auth.service";
+import API from "../utils/API";
 
 const required = (value) => {
   if (!value) {
@@ -43,7 +42,7 @@ const Login = (props) => {
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
-      AuthService.login(username, password).then(
+      API.saveUser(username, password).then(
         () => {
           props.history.push("/home");
           window.location.reload();
@@ -68,8 +67,6 @@ const Login = (props) => {
   return (
     <div className="col-md-12">
       <div className="card card-container">
-        
-
         <Form onSubmit={handleLogin} ref={form}>
           <div className="form-group">
             <label htmlFor="username">Username</label>

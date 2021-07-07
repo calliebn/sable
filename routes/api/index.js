@@ -7,6 +7,6 @@ router.use("/yarns", yarnRoutes);
 
 // User routes
 router.use("/user", userRoutes);
-// router.use("/logout", userRoutes);
+router.use("/logout", userRoutes);
 
 module.exports = router;

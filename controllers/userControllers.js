@@ -1,7 +1,8 @@
-const db = require("../models");
+const db = require('../models')
 
 module.exports = {
     create: function (req, res) {
+        console.log(req.body)
         db.User
             .create(req.body)
             .then(dbModel => {
@@ -12,19 +13,19 @@ module.exports = {
                     res.status(200).json(dbModel);
                 });
             })
+            .catch(err => res.status(500).json(err));
+    },
+
+    findByUsername: function (req, res) {
+        db.User
+            .findByUsername(req.body.username)
+            .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
 
-    // findById: function (req, res) {
-    //     db.User
-    //         .find(req.query)
-    //         .then(dbModel => res.json(dbModel))
-    //         .catch(err => res.status(422).json(err));
-    // },
-
     remove: function (req, res) {
         db.User
-            .findById({ _id: req.params.id })
+            .findByUsername({ _id: req.params.id })
             .then(dbModel => {
                 if (req.session.log_in) {
                     req.session.destroy(() => {

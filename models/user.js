@@ -28,15 +28,15 @@ const userSchema = new Schema(
             minLength: [6, 'Password must be at least six characters']
         },
 
-        passwordConfirm: {
-            type: String,
-            required: [true, "Please retype your password"],
-            validate: {
-                validator: function (el) {
-                    return el === this.password;
-                }, message: "Passwords don\'t match."
-            }
-        }
+        // passwordConfirm: {
+        //     type: String,
+        //     required: [true, "Please retype your password"],
+        //     validate: {
+        //         validator: function (el) {
+        //             return el === this.password;
+        //         }, message: "Passwords don\'t match."
+        //     }
+        // }
     }
 );
 

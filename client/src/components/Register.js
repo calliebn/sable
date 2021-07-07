@@ -3,8 +3,8 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
+import API from "../utils/API";
 
-import AuthService from "../services/auth.service";
 
 const required = (value) => {
   if (!value) {
@@ -55,6 +55,7 @@ const Register = (props) => {
   const [password, setPassword] = useState("");
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
+  // const [formObject, setFormObject] = useState({})
 
   const onChangeUsername = (e) => {
     const username = e.target.value;
@@ -71,17 +72,29 @@ const Register = (props) => {
     setPassword(password);
   };
 
+
   const handleRegister = (e) => {
     e.preventDefault();
+
 
     setMessage("");
     setSuccessful(false);
 
     form.current.validateAll();
 
+    // if(formObject.user && formObject.email && formObject.password) {
+    //   API.saveUser({
+    //     user: formObject.user,
+    //     email: formObject.email,
+    //     password: formObject.password
+    //   }).catch(err => console.log(err))
+    // }
+
     if (checkBtn.current.context._errors.length === 0) {
-      AuthService.register(username, email, password).then(
+      console.log(username, email, password)
+     API.saveUser({username, email, password}).then(
         (response) => {
+          console.log(response)
           setMessage(response.data.message);
           setSuccessful(true);
         },
@@ -103,8 +116,7 @@ const Register = (props) => {
   return (
     <div className="col-md-12">
       <div className="card card-container">
-       
-        <Form onSubmit={handleRegister} ref={form}>
+        <Form  ref={form}>
           {!successful && (
             <div>
               <div className="form-group">
@@ -144,7 +156,7 @@ const Register = (props) => {
               </div>
 
               <div className="form-group">
-                <button className="btn btn-primary btn-block">Sign Up</button>
+                <button onClick={handleRegister} className="btn btn-primary btn-block">Sign Up</button>
               </div>
             </div>
           )}
@@ -152,7 +164,9 @@ const Register = (props) => {
           {message && (
             <div className="form-group">
               <div
-                className={ successful ? "alert alert-success" : "alert alert-danger" }
+                className={
+                  successful ? "alert alert-success" : "alert alert-danger"
+                }
                 role="alert"
               >
                 {message}

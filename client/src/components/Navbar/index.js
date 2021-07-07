@@ -7,26 +7,26 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { Button } from "../Button";
 import { IconContext } from "react-icons/lib";
 import Yarn from '../../pages/Yarn'
-import Home from "../Home";
-import Profile from "../Profile";
+// import Home from "../Home";
+// import Profile from "../Profile";
 
-import AuthService from "../../services/auth.service";
+
 
 
 const Navbar = () => {
 
-const [currentUser, setCurrentUser] =useState(undefined);
-useEffect(() => {
-  const user =AuthService.getCurrentUser();
+// const [currentUser, setCurrentUser] =useState(undefined);
+// useEffect(() => {
+//   const user =AuthService.getCurrentUser();
 
-  if(user) {
-    setCurrentUser(user)
-  }
-}, []);
+//   if(user) {
+//     setCurrentUser(user)
+//   }
+// }, []);
 
-const logOut = () => {
-  AuthService.logout();
-}
+// const logOut = () => {
+//   AuthService.logout();
+// }
 
 
 
@@ -85,15 +85,15 @@ const logOut = () => {
                 </Link>
               </li>
 
-{currentUser && (
+{/* {currentUser && (
   
     <li className = 'nav-item'>
       <Link to={'/user'} className='nav-links'>User</Link>
     </li>
   
-)}
+)} */}
 
-{currentUser ? (
+{/* {currentUser ? (
           <div className="navbar-nav ml-auto">
             <li className="nav-item">
               <Link to={"/profile"} className="nav-links">
@@ -115,7 +115,16 @@ const logOut = () => {
   </li>
 
 </div>
-)}
+)} */}
+
+<div className="navbar-nav ml-auto">
+  <li className="nav-item">
+    <Link to={"/login"} className="nav-links">
+      Login
+    </Link>
+  </li>
+
+</div>
 
 
 

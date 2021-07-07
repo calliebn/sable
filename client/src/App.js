@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
-import AuthService from "./services/auth.service";
+// import AuthService from "./services/auth.service";
 import Login from "./components/Login";
 import Register from "./components/Register";
-
-
 
 
 
@@ -16,26 +14,26 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Yarn from "./pages/Yarn";
 
-import Profile from "./components/Profile";
-import BoardUser from "./components/BoardUser"
+// import Profile from "./components/Profile";
+// import BoardUser from "./components/BoardUser"
 
 
 
 
 const App =() => {
-  const [currentUser, setCurrentUser] = useState(undefined);
+  // const [currentUser, setCurrentUser] = useState(undefined);
 
-  useEffect(() => {
-    const user =AuthService.getCurrentUser();
+  // useEffect(() => {
+  //   const user =AuthService.getCurrentUser();
 
-    if(user) {
-      setCurrentUser(user);
-    }
-  }, []);
+  //   if(user) {
+  //     setCurrentUser(user);
+  //   }
+  // }, []);
 
-  const logout = () => {
-    AuthService.logout()
-  }
+  // const logout = () => {
+  //   AuthService.logout()
+   
   return (
 
 
@@ -50,10 +48,10 @@ const App =() => {
         <Route path="/" exact component={Home} />
  
         <Route path="/yarn" export component ={Yarn} />
-        <Route exact path='/profile' component={Profile}/>
+      
         <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
-        <Route path='/user' component={BoardUser} />
+        <Route path="/register" component={Register} />
+       
       
       </Switch>
       <Footer />
