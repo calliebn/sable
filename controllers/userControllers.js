@@ -2,25 +2,40 @@ const db = require("../models");
 
 module.exports = {
     create: function (req, res) {
-        // console.log("create", req.body)
         db.User
             .create(req.body)
             .then(dbModel => {
-                console.log("Session", req.session, "USER Details", dbModel)
                 req.session.save(() => {
                     req.session.user_id = dbModel._id;
                     req.session.log_in = true;
                     res.status(200).json(dbModel);
                 });
+                console.log(req.session)
             })
-            .catch(err => res.status(422).json(err));
+            .catch(err => {
+                console.log(err)
+                res.status(422).json(err)
+            });
     },
 
-    findById: function (req, res) {
-        db.User
-            .findById(req.query)
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
+    findByUsername: function (req, res) {
+        db.User.findOne({ username: req.body.username })
+            .then(async (user) => {
+                console.log(user)
+                if (user) {
+                    const pass = await user.correctPassword(req.body.password)
+                    if (pass) {
+                        req.session.log_in = true
+                        res.status(200).send({ message: "Successfully logged in" });
+                    } else {
+                        console.log("Error")
+                    }
+                }
+            })
+            .catch(err => {
+                console.log(err)
+                res.status(422).json(err)
+            });
     },
 
     remove: function (req, res) {

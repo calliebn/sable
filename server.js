@@ -18,9 +18,6 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-// Define API routes here
-app.use(routes);
-
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/yarndb",
   {
     useNewUrlParser: true,
@@ -32,10 +29,10 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/yarndb",
 
 // Connect to Mongo DB
 let storeDB = new MongoDBStore({
-  uri: process.env.MONGODB_URI || "mongodb://localhost/yarndb",
+  uri: process.env.MONGODB_URI || "mongodb://localhost:27017/yarndb",
   databaseName: "yarndb",
   collection: "mysession",
-  mongooseConnection: mongoose.connect
+  // mongooseConnection: mongoose.connect
 });
 
 // Catch errors
@@ -54,7 +51,8 @@ app.use(session({
   saveUninitialized: true
 }));
 
-
+// Define API routes here
+app.use(routes);
 
 // Send every other request to the React app
 // Define any API routes before this runs
