@@ -68,11 +68,11 @@ The user can also subscribe to newsletter if they enter their name and email on 
 
 ![Screenshot of landing page](images/LandingPage.png)
 
-![Screenshot of Sign up](images/SignUp.png)
+![Screenshot of Sign up](images/SignUp.PNG)
 
-![Screenshot of Login](images/Login.png)
+![Screenshot of Login](images/Login.PNG)
 
-![Screenshot of subscription](images/subscription.png)
+![Screenshot of subscription](images/subscription.PNG)
 
 ## License
 
