@@ -86,6 +86,8 @@ const Register = (props) => {
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
+          props.history.push("/");
+          window.location.reload();
         },
         (error) => {
           const resMessage =

@@ -32,12 +32,6 @@ module.exports = {
                         console.log("Error")
                     }
                 }
-
-                if (response.ok) {
-                    document.location.replace("/");
-                } else {
-                    alert(response.statusMessage);
-                }
             })
             .catch(err => {
                 console.log(err)
