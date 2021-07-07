@@ -3,9 +3,10 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
-import API from "../utils/API"
+import "./style.css";
+import API from "../../utils/API"
 
-import AuthService from "../services/auth.service";
+import AuthService from "../../services/auth.service";
 
 const required = (value) => {
   if (!value) {
@@ -85,6 +86,8 @@ const Register = (props) => {
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
+          props.history.push("/");
+          window.location.reload();
         },
         (error) => {
           const resMessage =

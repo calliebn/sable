@@ -2,8 +2,9 @@ import React, { useState, useRef } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
+import "./style.css"
 
-import AuthService from "../services/auth.service";
+import AuthService from "../../services/auth.service";
 
 const required = (value) => {
   if (!value) {
@@ -45,7 +46,7 @@ const Login = (props) => {
     if (checkBtn.current.context._errors.length === 0) {
       AuthService.login(username, password).then(
         () => {
-          props.history.push("/home");
+          props.history.push("/");
           window.location.reload();
         },
         (error) => {
@@ -68,7 +69,7 @@ const Login = (props) => {
   return (
     <div className="col-md-12">
       <div className="card card-container">
-        
+
 
         <Form onSubmit={handleLogin} ref={form}>
           <div className="form-group">

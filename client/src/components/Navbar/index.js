@@ -50,7 +50,7 @@ const Navbar = () => {
           <div className='navbar-container container'>
             <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
               <FcCloseUpMode className='navbar-icon' />
-              Sable
+              <img src="./assets/sable_logo.png"></img>
             </Link>
             <div className='menu-icon' onClick={handleClick}>
               {click ? <FaTimes /> : <FaBars />}
@@ -71,7 +71,7 @@ const Navbar = () => {
                   Yarn
                 </Link>
               </li>
-              <li className='nav-item'>
+              {/* <li className='nav-item'>
                 <Link
                   to='/message'
                   className='nav-links'
@@ -79,7 +79,7 @@ const Navbar = () => {
                 >
                   Message
                 </Link>
-              </li>
+              </li> */}
               <li className='nav-item'>
                 <Link
                   to='/chat'
