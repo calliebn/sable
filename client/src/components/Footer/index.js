@@ -23,8 +23,8 @@ function Footer() {
               placeholder="Your Email"
             /> */}
             <Contact />
-          
-        
+
+
           </form>
         </div>
       </section>
@@ -34,7 +34,7 @@ function Footer() {
           <div className="footer-logo">
             <Link to="/" className="social-logo">
               <FcCloseUpMode className="navbar-icon" />
-              SABLE
+              <img src="./assets/sable_logo.png"></img>
             </Link>
           </div>
           <small className="website-rights">

@@ -9,8 +9,8 @@ import { homeObjOne } from "./Data";
 function Home() {
   return (
     <>
-      <Hero {...homeObjOne}   />
-    {/* <Login />
+      <Hero {...homeObjOne} />
+      {/* <Login />
     <Register /> */}
     </>
   );

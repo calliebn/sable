@@ -52,7 +52,7 @@ function Hero({
             </div>
             <div className="col">
               <div className="home__hero-img-wrapper">
-                <div src={img} alt={alt} className="home__hero-img"></div>
+                <img src={img} alt={alt} className="home__hero-img"></img>
               </div>
             </div>
           </div>
