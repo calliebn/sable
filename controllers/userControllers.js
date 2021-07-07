@@ -1,3 +1,4 @@
+const { response } = require("express");
 const db = require("../models");
 
 module.exports = {
@@ -10,8 +11,8 @@ module.exports = {
                     req.session.log_in = true;
                     res.status(200).json(dbModel);
                 });
-                console.log(req.session)
             })
+
             .catch(err => {
                 console.log(err)
                 res.status(422).json(err)
@@ -30,6 +31,12 @@ module.exports = {
                     } else {
                         console.log("Error")
                     }
+                }
+
+                if (response.ok) {
+                    document.location.replace("/");
+                } else {
+                    alert(response.statusMessage);
                 }
             })
             .catch(err => {

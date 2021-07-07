@@ -71,7 +71,7 @@ const Navbar = () => {
                   Yarn
                 </Link>
               </li>
-              <li className='nav-item'>
+              {/* <li className='nav-item'>
                 <Link
                   to='/message'
                   className='nav-links'
@@ -79,7 +79,7 @@ const Navbar = () => {
                 >
                   Message
                 </Link>
-              </li>
+              </li> */}
               <li className='nav-item'>
                 <Link
                   to='/chat'
