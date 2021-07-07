@@ -2,6 +2,7 @@ import React from "react";
 import YarnCard from "../../components/YarnCard";
 
 function YarnInfo() {
+  const yarns= [{name:"fiber"},{name:"aple"}]
   return (
     <div>
       <h1>Yarn</h1>

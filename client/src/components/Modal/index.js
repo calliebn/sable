@@ -1,17 +1,26 @@
-import { useEffect } from "react";
+import React from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-
-function Modal() {
-  const [fiber, setFiber] = useState({});
-  useEffect(async () => {
-    const data = await axios.get("https://api.ravelry.com/yarns/search.json", {
-      headers: {
-        Authorization:
-          "Basic cmVhZC00Y2UwNGRjYzRlNWE1NDAzZDEwMzgxN2Y1YzAxOTYyYzowMGI0Y0JPS2dYUGlLdGIvYjFUdHZnekFnZXFkSTViRld4K3RSQThk",
-      },
-    });
-    setFiber(data);
-  });
+import Modal from "../../components/Modal";
+import YarnCard from "../../components/YarnCard";
+function YarnInfo() {
+    const [fiber, setFiber] = useState({});
+    const [searchTerm, setSearchTerm] = useState("");
+    const handleInputChange = (event) => {
+        console.log("Event", event.target.value, event.target.name);
+        const apiURL = "https://api.ravelry.com/yarns/search.json?query=" + event.target.value;
+        console.log(apiURL);
+        //CALl API 
+        const data = axios.get(apiURL, {
+            headers: {
+                Authorization:
+                    "cmVhZC00Y2UwNGRjYzRlNWE1NDAzZDEwMzgxN2Y1YzAxOTYyYzowMGI0Y0JPS2dYUGlLdGIvYjFUdHZnekFnZXFkSTViRld4K3RSQThk"
+            },
+        });
+        console.log("API DATA", data);
+        setFiber(data);
+        console.log("fiber", fiber.length);
+    };
 
   return (
       //colorway has to be a text area
@@ -37,6 +46,11 @@ function Modal() {
               class="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
+              <>
+                            Search for Yarn :
+                            <label for="company">Company Name:<input name="companyName" onChange={handleInputChange} /></label>
+                            <label for="brand">Brand:<input name="brandName" onChange={handleInputChange} /></label>
+                        </>
             ></button>
           </div>
           <div class="modal-body">
@@ -46,7 +60,7 @@ function Modal() {
             <label for="company">Company Name:{fiber.yarns[0].yarn_company_name}</label>
             <label for="brand">Brand:{fiber.yarns[].name}</label>
             <label for="colorway">Colorway:<input type="input" name="colorway" id="colorway" value=""/></label>
-            <label for="yardage">Yardage:{iber.yarns[].yardage}</label>
+            <label for="yardage">Yardage:{fiber.yarns[].yardage}</label>
             <label for="grams">Grams:{fiber.yarns[].grams}</label>
             <label for="weight">Weight: {fiber.yarns[].yarn.weight.name}</label>
             <label for="skeins">Skeins:<input type="input" name="skeins" id="skeins" value=""/></label>
