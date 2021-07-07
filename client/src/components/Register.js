@@ -3,6 +3,7 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
+import API from "../utils/API"
 
 import AuthService from "../services/auth.service";
 
@@ -80,7 +81,7 @@ const Register = (props) => {
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
-      AuthService.register(username, email, password).then(
+      API.saveUser({ username, email, password }).then(
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
@@ -103,7 +104,7 @@ const Register = (props) => {
   return (
     <div className="col-md-12">
       <div className="card card-container">
-       
+
         <Form onSubmit={handleRegister} ref={form}>
           {!successful && (
             <div>
@@ -152,7 +153,7 @@ const Register = (props) => {
           {message && (
             <div className="form-group">
               <div
-                className={ successful ? "alert alert-success" : "alert alert-danger" }
+                className={successful ? "alert alert-success" : "alert alert-danger"}
                 role="alert"
               >
                 {message}
