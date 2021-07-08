@@ -72,6 +72,16 @@
   color: #fff;
 }
 
+.btn--outline {
+  color: rgb(167, 164, 164);
+  text-decoration: none;
+}
+
+.btn--outline a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
 .menu-icon {
   display: none;
 }
