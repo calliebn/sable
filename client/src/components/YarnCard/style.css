@@ -1,0 +1,13 @@
+.card {
+  margin: 20px;
+  box-shadow: 1px 1px #efefef;
+}
+
+.img-container img {
+  width: 100%;
+  height: auto;
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
+}
