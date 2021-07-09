@@ -49,7 +49,7 @@ const App =() => {
     
         <Route path="/" exact component={Home} />
  
-        <Route path="/yarn" export component ={Yarn} />
+        <Route path="/yarn" component ={Yarn} />
         <Route exact path='/profile' component={Profile}/>
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
