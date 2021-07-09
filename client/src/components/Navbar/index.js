@@ -81,13 +81,7 @@ const Navbar = () => {
                 </Link>
               </li> */}
               <li className='nav-item'>
-                <Link
-                  to='/chat'
-                  className='nav-links'
-                  onClick={closeMobileMenu}
-                >
-                  Chat
-                </Link>
+                <a className='nav-links' href="https://jovial-dijkstra-0de28b.netlify.app/" target="_blank" rel="noopener noreferrer" onClick={closeMobileMenu}>Chat</a>
               </li>
 
               {currentUser && (
