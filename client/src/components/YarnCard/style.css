@@ -1,0 +1,15 @@
+.card {
+  margin: 20px;
+  box-shadow: 1px 1px #efefef;
+  background-color: azure;
+  margin-bottom: 20px;
+}
+
+.img-container img {
+  width: 30%;
+  height: auto;
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
+}

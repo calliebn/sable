@@ -67,7 +67,6 @@ const Navbar = () => {
                   className='nav-links'
                   onClick={closeMobileMenu}
                 >
-                  <Yarn />
                   Yarn
                 </Link>
               </li>
