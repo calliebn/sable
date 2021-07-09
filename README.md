@@ -51,6 +51,8 @@ It is an web application for crochet and knitting enthusiast.
 Emailjs
 redis
 socket.io-client
+heroku
+netlify
 
 ## Installation
 
@@ -73,6 +75,8 @@ The user can also subscribe to newsletter if they enter their name and email on 
 ![Screenshot of Login](images/Login.PNG)
 
 ![Screenshot of subscription](images/subscription.PNG)
+
+![Screenshot of chat](images/chat.PNG)
 
 ## License
 
