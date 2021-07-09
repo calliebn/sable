@@ -16,9 +16,9 @@ const YarnCard = (props) => {
                     <p>Yardage: {props.yardage}</p>
                     <p>Grams: {props.grams}</p>
                     <p>Weight: {props.weight}</p>
-                    <p>Skeins: {props.skein}</p>
+                    <p>Skeins: {props.skeins}</p>
                     <p>Dye Lot: {props.dye_lot}</p>
-                    <p>Description: {props.desc}</p>
+                    <p>Description: {props.description}</p>
                 </div>
             </div>
         </div>

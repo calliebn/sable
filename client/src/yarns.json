@@ -1,0 +1,183 @@
+[
+    {
+        "company": "Bernat",
+        "brand": "Softee Chunky",
+        "colorway": "True Grey",
+        "yardage": 108,
+        "grams": 100,
+        "weight": 6,
+        "skeins": 1,
+        "dye_lot": 145601,
+        "description": "Scarf for mom",
+        "user_id": "60e384a6b98c85c52acb42e8"
+    },
+
+    {
+        "company": "Brown Sheep Company",
+        "brand": "Nature Spun",
+        "colorway": "Burnt Sienna",
+        "yardage": 310,
+        "grams": 50,
+        "weight": 1,
+        "skeins": 1,
+        "dye_lot": 31,
+        "description": "socks for Juniper",
+        "user_id": "60e384a6b98c85c52acb42e8"
+    },
+
+    {
+        "company": "Brown Sheep Company",
+        "brand": "Nature Spun",
+        "colorway": "Sunburst Gold",
+        "yardage": 310,
+        "grams": 50,
+        "weight": 1,
+        "skeins": 1,
+        "dye_lot":  54,
+        "description": "socks for Juniper",
+        "user_id": "60e384a6b98c85c52acb42e8"
+    },
+
+    {
+        "company": "Lion Brand",
+        "brand": "Tweed Stripes",
+        "colorway": "Orchid",
+        "yardage": 144,
+        "grams": 85,
+        "weight": 5,
+        "skeins": 2,
+        "dye_lot": 67902,
+        "description": "Hat for Amelia",
+        "user_id": "60e384a6b98c85c52acb42e8"
+    },
+
+    {
+        "company": "Lion Brand",
+        "brand": "Hometown USA",
+        "colorway": "Montpelier Peacock",
+        "yardage": 81,
+        "grams": 142,
+        "weight": 6,
+        "skeins": 4,
+        "dye_lot": 23794,
+        "description": "Mermaid blanket for Daphne",
+        "user_id": "60e384a6b98c85c52acb42e8"
+    },
+
+    {
+        "company": "Lion Brand",
+        "brand": "ZZ Twist",
+        "colorway": "Cranberry",
+        "yardage": 246,
+        "grams": 100,
+        "weight": 4,
+        "skeins": 8,
+        "dye_lot": 619487,
+        "description": "Blanket for charity",
+        "user_id": "60e384a6b98c85c52acb42e8"
+    },
+
+    {
+        "company": "Red Heart",
+        "brand": "Washable Ewe",
+        "colorway": "Icing",
+        "yardage": 183,
+        "grams": 100,
+        "weight": 4,
+        "skeins": 2,
+        "dye_lot": 772316,
+        "description": "baby hat and mitts for Io",
+        "user_id": "60e384a6b98c85c52acb42e8"
+    },
+
+    {
+        "company": "Red Heart",
+        "brand": "Bamboo Ewe",
+        "colorway": "Sprout",
+        "yardage": 177,
+        "grams": 100,
+        "weight": 4,
+        "skeins": 2,
+        "dye_lot": 3658,
+        "description": "",
+        "user_id": "60e384a6b98c85c52acb42e8"
+    },
+
+    {
+        "company": "The Alpaca Yarn Co",
+        "brand": "Classic Alpaca",
+        "colorway": "1628",
+        "yardage": 110,
+        "grams": 50,
+        "weight": 3,
+        "skeins": 1,
+        "dye_lot": 71838,
+        "description": "Bought on a trip to the Alpaca Farm",
+        "user_id": "60e384a6b98c85c52acb42e8"
+    },
+
+    {
+        "company": "Lion Brand",
+        "brand": "Superwash Merino Cashmere",
+        "colorway": "Saffron",
+        "yardage": 87,
+        "grams": 40,
+        "weight": 4,
+        "skeins": 3,
+        "dye_lot": 57116,
+        "description": "Sweater",
+        "user_id": "60e384a6b98c85c52acb42e8"
+    },
+
+    {
+        "company": "Lion Brand",
+        "brand": "Superwash Merino Cashmere",
+        "colorway": "Olive",
+        "yardage": 87,
+        "grams": 40,
+        "weight": 4,
+        "skeins": 3,
+        "dye_lot": 57113,
+        "description": "Sweater",
+        "user_id": "60e384a6b98c85c52acb42e8"
+    },
+
+    {
+        "company": "Zealana",
+        "brand": "Kauri",
+        "colorway": "K 05",
+        "yardage": 94,
+        "grams": 50,
+        "weight": 4,
+        "skeins": 2,
+        "dye_lot": 32,
+        "description": "Souvenir from New Zealand",
+        "user_id": "60e384a6b98c85c52acb42e8"
+    },
+
+    {
+        "company": "Zealana",
+        "brand": "Kauri",
+        "colorway": "K 13",
+        "yardage": 94,
+        "grams": 50,
+        "weight": 4,
+        "skeins": 2,
+        "dye_lot": 100,
+        "description": "Souvenir from New Zealand",
+        "user_id": "60e384a6b98c85c52acb42e8"
+    },
+
+    {
+        "company": "Furls",
+        "brand": "Whims Merino",
+        "colorway": "Light Grey",
+        "yardage": 196,
+        "grams": 100,
+        "weight": 3,
+        "skeins": 3,
+        "dye_lot": 3326,
+        "description": "Bought at CGOA conference",
+        "user_id": "60e384a6b98c85c52acb42e8"
+    }
+]

@@ -1,11 +1,13 @@
-import React from 'react'
+import React from 'react';
+import YarnInfo from '../../components/Yarns';
 
-const Yarn = () => {
+function Fibers() {
+
     return (
         <div>
-            
+            <YarnInfo />
         </div>
     )
 }
 
-export default Yarn;
+export default Fibers;
