@@ -12,7 +12,7 @@ const YarnCard = (props) => {
                 <div className="card=body">
                     <p>Company Name: {props.company}</p>
                     <p>Brand: {props.brand}</p>
-                    <p>Colorway: {props.color}</p>
+                    <p>Colorway: {props.colorway}</p>
                     <p>Yardage: {props.yardage}</p>
                     <p>Grams: {props.grams}</p>
                     <p>Weight: {props.weight}</p>
